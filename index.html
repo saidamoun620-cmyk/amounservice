@@ -1,1 +1,576 @@
-<!DOCTYPE html><html lang=fr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>AMOUN SERVICE</title><style>*{margin:0;padding:0;box-sizing:border-box}body{background:#080808;color:#fff;font-family:system-ui}.top{display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid #1a1a1a;background:#080808;position:sticky;top:0;z-index:10}.icon{width:44px;height:44px;background:linear-gradient(145deg,#e8c87a,#b8974a);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#000}.brand b{color:#e8c87a;letter-spacing:2px;font-size:14px;display:block}.brand span{color:#e8c87a;letter-spacing:2px;font-size:8px;opacity:.6}.bag{width:40px;height:40px;border:1px solid #333;border-radius:10px;display:flex;align-items:center;justify-content:center}.feats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:16px 12px}.feat{background:#141414;border:1px solid #1e1e1e;border-radius:18px;padding:16px 6px;text-align:center}.feat b{font-size:12px;display:block}.feat span{font-size:11px;color:#777}.tit{padding:18px 14px 8px;display:flex;justify-content:space-between}.tit h2{font-family:serif;font-size:24px;font-weight:400}.tit span{color:#666;font-size:12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:6px 12px 100px}.card{background:#101010;border:1px solid #1e1e1e;border-radius:22px;overflow:hidden}.img{position:relative;aspect-ratio:1;background:#fff;overflow:hidden}.img img{width:100%;height:100%;object-fit:cover;display:block}.badge{position:absolute;top:10px;left:10px;padding:6px 12px;border-radius:18px;font-size:10px;font-weight:800;z-index:2}.red{background:#e11d48;color:#fff}.gold{background:#e8c87a;color:#000}.ct{padding:12px}.name{font-size:14px;font-weight:700;min-height:38px;line-height:1.2}.desc{font-size:11px;color:#777;margin-top:4px;min-height:30px}.price{color:#e8c87a;font-weight:900;font-size:18px;margin-top:10px}.add{background:#e8c87a;color:#000;border:0;border-radius:22px;padding:11px;font-weight:800;font-size:13px;width:100%;margin-top:10px}.wa{background:#25D366;color:#fff;border:0;border-radius:22px;padding:11px;font-weight:800;font-size:13px;width:100%;margin-top:8px;text-align:center;text-decoration:none;display:block}.float{position:fixed;bottom:12px;left:12px;right:12px;background:#25D366;color:#fff;border-radius:28px;padding:14px;text-align:center;font-weight:900;text-decoration:none;z-index:20}</style></head><body><div class=top><div style=display:flex;align-items:center;gap:10px><div class=icon>AS</div><div class=brand><b>AMOUN SERVICE</b><span>ACCESSOIRES PREMIUM</span></div></div><div class=bag>👜</div></div><div class=feats><div class=feat>🚚<br><b>Livraison 24h</b><br><span>Moroni</span></div><div class=feat>💬<br><b>Commande</b><br><span>WhatsApp</span></div><div class=feat>🛡️<br><b>Qualité</b><br><span>Premium</span></div></div><div class=tit><h2>La boutique</h2><span>7 produits</span></div><div class=grid>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amoun Service - Accessoires Premium</title>
+    <style>
+        :root {
+            --bg-color: #0b0b0b;
+            --card-bg: #141414;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-main: #ffffff;
+            --text-muted: #aaaaaa;
+            --whatsapp-green: #25d366;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            padding-bottom: 100px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-color);
+            z-index: 100;
+        }
+
+        .brand-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .brand-sub {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+        }
+
+        .cart-icon-btn {
+            background: none;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--gold);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        .products-count {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 15px;
+        }
+
+        @media(min-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: #ff3b30;
+            color: white;
+            font-size: 0.65rem;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .badge.best {
+            background-color: var(--gold);
+            color: #000;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            background-color: #1f1f1f;
+        }
+
+        @media(min-width: 768px) {
+            .product-img {
+                height: 200px;
+            }
+        }
+
+        .product-info {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-name {
+            font-size: 0.95rem;
+            font-weight: bold;
+            margin: 0 0 5px 0;
+        }
+
+        .product-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 0 0 12px 0;
+            line-height: 1.3;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .btn-add {
+            background: linear-gradient(to bottom, #e6c659, var(--gold));
+            color: #000;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn-whatsapp-card {
+            background-color: var(--whatsapp-green);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+
+        /* Panier Drawer */
+        .cart-drawer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            border-top: 1px solid var(--gold);
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .cart-drawer.open {
+            transform: translateY(0);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #111;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .cart-total-section {
+            margin-top: 15px;
+            border-top: 1px solid #333;
+            padding-top: 10px;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .delivery-info {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .btn-checkout {
+            background-color: var(--whatsapp-green);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <div class="brand-title">👑 AMOUN SERVICE</div>
+            <div class="brand-sub">ACCESSOIRES PREMIUM</div>
+        </div>
+        <button class="cart-icon-btn" onclick="toggleCart()">
+            🛒
+            <span class="cart-badge" id="cartCount">0</span>
+        </button>
+    </header>
+
+    <div class="container">
+        <div class="section-header">
+            <h1 class="section-title">La boutique</h1>
+            <span class="products-count">11 produits</span>
+        </div>
+
+        <div class="products-grid">
+            <!-- Produit 1 : Câble Type-C vers Type-C 10FT -->
+            <div class="product-card">
+                <span class="badge">Nouveau</span>
+                <img src="cable-typec-10ft.jpg" alt="Câble Type-C vers Type-C" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-name">Câble Type-C vers Type-C 10FT</h3>
+                    <p class="product-desc">Câble de charge rapide et transfert, longueur 3m (10 pieds).</p>
+                    <div class="product-price">2 000 KMF</div>
+                    <button class="btn-add" onclick="addToCart('Câble Type-C vers Type-C 10FT', 2000)">+ Ajouter</button>
+                    <a href="https://wa.me/2694273776?text=Bonjour,%20je%20souhaite%20commander%20le%20Câble%20Type-C%20vers%20Type-C%2010FT" class="btn-whatsapp-card" target="_blank">💬 WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Produit 2 : Câble USB-C vers Lightning -->
+            <div class="product-card">
+                <span class="badge best">Best-Seller</span>
+                <img src="cable-usbc-lightning.jpg" alt="Câble USB-C vers Lightning" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-name">Câble USB-C vers Lightning</h3>
+                    <p class="product-desc">Charge rapide pour iPhone et iPad, haute résistance.</p>
+                    <div class="product-price">2 000 KMF</div>
+                    <button class="btn-add" onclick="addToCart('Câble USB-C vers Lightning', 2000)">+ Ajouter</button>
+                    <a href="https://wa.me/2694273776?text=Bonjour,%20je%20souhaite%20commander%20le%20Câble%20USB-C%20vers%20Lightning" class="btn-whatsapp-card" target="_blank">💬 WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Produit 3 : Adaptateur Micro-USB vers Type-C -->
+            <div class="product-card">
+                <span class="badge">Promo</span>
+                <img src="adaptateur-microusb.jpg" alt="Adaptateur Micro-USB vers Type-C" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-name">Adaptateur Micro-USB vers Type-C</h3>
+                    <p class="product-desc">Adaptateur compact pour connecter et charger vos appareils.</p>
+                    <div class="product-price">500 KMF</div>
+                    <button class="btn-add" onclick="addToCart('Adaptateur Micro-USB vers Type-C', 500)">+ Ajouter</button>
+                    <a href="https://wa.me/2694273776?text=Bonjour,%20je%20souhaite%20commander%20l'%20Adaptateur%20Micro-USB%20vers%20Type-C" class="btn-whatsapp-card" target="_blank">💬 WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Produit 4 : Adaptateur Lightning vers Type-C -->
+            <div class="product-card">
+                <span class="badge">Nouveau</span>
+                <img src="adaptateur-lightning.jpg" alt="Adaptateur Lightning vers Type-C" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-name">Adaptateur Lightning vers Type-C</h3>
+                    <p class="product-desc">Convertisseur compact et rapide pour vos accessoires.</p>
+                    <div class="product-price">750 KMF</div>
+                    <button class="btn-add" onclick="addToCart('Adaptateur Lightning vers Type-C', 750)">+ Ajouter</button>
+                    <a href="https://wa.me/2694273776?text=Bonjour,%20je%20souhaite%20commander%20l'%20Adaptateur%20Lightning%20vers%20Type-C" class="btn-whatsapp-card" target="_blank">💬 WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Produit 5 : Adaptateur Jack 3.5mm vers Lightning -->
+            <div class="product-card">
+                <span class="badge best">Nouveau</span>
+                <img src="adaptateur-jack-lightning.jpg" alt="Adaptateur Jack 3.5mm vers Lightning" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-name">Adaptateur Jack 3.5mm vers Lightning</h3>
+                    <p class="product-desc">Son Hi-Fi Premium, Plug & Play, connexion instantanée.</p>
+                    <div class="product-price">750 KMF</div>
+                    <button class="btn-add" onclick="addToCart('Adaptateur Jack 3.5mm vers Lightning', 750)">+ Ajouter</button>
+                    <a href="https://wa.me/2694273776?text=Bonjour,%20je%20souhaite%20commander%20l'%20Adaptateur%20Jack%203.5mm%20vers%20Lightning" class="btn-whatsapp-card" target="_blank">💬 WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Produit 6 : Câble USB vers Lightning -->
+            <div class="product-card">
+                <span class="badge">Standard</span>
+                <img src="cable-usb-lightning.jpg" alt="Câble USB vers Lightning" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-name">Câble USB vers Lightning</h3>
+                    <p class="product-desc">Câble de charge et synchronisation standard pour iPhone.</p>
+                    <div class="product-price">1 500 KMF</div>
+                    <button class="btn-add" onclick="addToCart('Câble USB vers Lightning', 1500)">+ Ajouter</button>
+                    <a href="https://wa.me/2694273776?text=Bonjour,%20je%20souhaite%20commander%20le%20Câble%20USB%20vers%20Lightning" class="btn-whatsapp-card" target="_blank">💬 WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Produit 7 : Adaptateur Audio Type-C vers Jack 3.5mm -->
+            <div class="product-card">
+                <span class="badge best">Nouveau</span>
+                <img src="adaptateur-typec-jack.jpg" alt="Adaptateur Audio Type-C vers Jack 3.5mm" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-name">Adaptateur Audio Type-C vers Jack 3.5mm</h3>
+                    <p class="product-desc">Audio haute fidélité, connexion pour écouteurs et casques.</p>
+                    <div class="product-price">750 KMF</div>
+                    <button class="btn-add" onclick="addToCart('Adaptateur Audio Type-C vers Jack 3.5mm', 750)">+ Ajouter</button>
+                    <a href="https://wa.me/2694273776?text=Bonjour,%20je%20souhaite%20commander%20l'%20Adaptateur%20Audio%20Type-C%20vers%20Jack%203.5mm" class="btn-whatsapp-card" target="_blank">💬 WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Produit 8 : Adaptateur USB vers Type-C -->
+            <div class="product-card">
+                <span class="badge">Promo</span>
+                <img src="adaptateur-usb-typec.jpg" alt="Adaptateur USB vers Type-C" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-name">Adaptateur USB vers Type-C</h3>
+                    <p class="product-desc">Adaptateur compact argenté (lot de 4 pcs), connexion rapide.</p>
+                    <div class="product-price">500 KMF</div>
+                    <button class="btn-add" onclick="addToCart('Adaptateur USB vers Type-C', 500)">+ Ajouter</button>
+                    <a href="https://wa.me/2694273776?text=Bonjour,%20je%20souhaite%20commander%20l'%20Adaptateur%20USB%20vers%20Type-C" class="btn-whatsapp-card" target="_blank">💬 WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Produit 9 : Adaptateur Type-C vers HDTV 4K UHD -->
+            <div class="product-card">
+                <span class="badge best">4K UHD</span>
+                <img src="adaptateur-typec-hdtv.jpg" alt="Adaptateur Type-C vers HDTV" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-name">Adaptateur Type-C vers HDTV 4K UHD</h3>
+                    <p class="product-desc">Diffusez votre smartphone, tablette ou PC sur téléviseur ou projecteur.</p>
+                    <div class="product-price">2 500 KMF</div>
+                    <button class="btn-add" onclick="addToCart('Adaptateur Type-C vers HDTV 4K UHD', 2500)">+ Ajouter</button>
+                    <a href="https://wa.me/2694273776?text=Bonjour,%20je%20souhaite%20commander%20l'%20Adaptateur%20Type-C%20vers%20HDTV%204K%20UHD" class="btn-whatsapp-card" target="_blank">💬 WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Produit 10 : Chargeur Sans Fil Ronde 15W -->
+            <div class="product-card">
+                <span class="badge best">15W Fast</span>
+                <img src="chargeur-sans-fil.jpg" alt="Chargeur Sans Fil Ronde 15W" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-name">Chargeur Sans Fil Ronde 15W</h3>
+                    <p class="product-desc">Chargeur Sans Fil + Câble Type-C - Posez et Chargez - Compatible iPhone, Android, AirPods.</p>
+                    <div class="product-price">2 500 KMF</div>
+                    <button class="btn-add" onclick="addToCart('Chargeur Sans Fil Ronde 15W', 2500)">+ Ajouter</button>
+                    <a href="https://wa.me/2694273776?text=Bonjour,%20je%20souhaite%20commander%20le%20Chargeur%20Sans%20Fil%20Ronde%2015W" class="btn-whatsapp-card" target="_blank">💬 WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Produit 11 : Écouteurs Filaires Jack 3.5mm avec Micro -->
+            <div class="product-card">
+                <span class="badge">Audio</span>
+                <img src="ecouteurs-jack.jpg" alt="Écouteurs Filaires Jack 3.5mm avec Micro" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-name">Écouteurs Filaires Jack 3.5mm avec Micro</h3>
+                    <p class="product-desc">Écouteurs intra-auriculaires avec microphone et commande intégrée.</p>
+                    <div class="product-price">1 500 KMF</div>
+                    <button class="btn-add" onclick="addToCart('Écouteurs Filaires Jack 3.5mm avec Micro', 1500)">+ Ajouter</button>
+                    <a href="https://wa.me/2694273776?text=Bonjour,%20je%20souhaite%20commander%20les%20Écouteurs%20Filaires%20Jack%203.5mm" class="btn-whatsapp-card" target="_blank">💬 WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panier (Drawer) -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <span id="cartTitle">Votre panier (0)</span>
+            <button class="close-cart" onclick="toggleCart()">✕</button>
+        </div>
+        <div id="cartItemsList">
+            <p style="color: #777; font-size: 0.9rem;">Votre panier est vide.</p>
+        </div>
+        <div class="cart-total-section">
+            <div class="total-row">
+                <span>Total</span>
+                <span id="cartTotalPrice">0 KMF</span>
+            </div>
+            <div class="delivery-info">Livraison Moroni 24h · Commande confirmée sur WhatsApp</div>
+            <button class="btn-checkout" onclick="checkoutWhatsApp()">
+                💬 Commander sur WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+
+        function toggleCart() {
+            const drawer = document.getElementById('cartDrawer');
+            drawer.classList.toggle('open');
+        }
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateCartUI();
+            toggleCart();
+        }
+
+        function updateCartUI() {
+            const cartCount = document.getElementById('cartCount');
+            const cartTitle = document.getElementById('cartTitle');
+            const cartItemsList = document.getElementById('cartItemsList');
+            const cartTotalPrice = document.getElementById('cartTotalPrice');
+
+            let totalCount = 0;
+            let totalPrice = 0;
+            let itemsHtml = '';
+
+            cart.forEach((item, index) => {
+                totalCount += item.quantity;
+                totalPrice += item.price * item.quantity;
+                itemsHtml += `
+                    <div class="cart-item">
+                        <div>
+                            <div style="font-weight:bold; font-size:0.9rem;">${item.name}</div>
+                            <div style="color:var(--gold); font-size:0.85rem;">${item.price * item.quantity} KMF</div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <button onclick="changeQty(${index}, -1)" style="background:#333; color:#fff; border:none; width:24px; height:24px; border-radius:4px; cursor:pointer;">-</button>
+                            <span style="font-size:0.9rem;">${item.quantity}</span>
+                            <button onclick="changeQty(${index}, 1)" style="background:#333; color:#fff; border:none; width:24px; height:24px; border-radius:4px; cursor:pointer;">+</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            cartCount.textContent = totalCount;
+            cartTitle.textContent = `Votre panier (${totalCount})`;
+            cartTotalPrice.textContent = `${totalPrice} KMF`;
+
+            if (cart.length === 0) {
+                cartItemsList.innerHTML = '<p style="color: #777; font-size: 0.9rem;">Votre panier est vide.</p>';
+            } else {
+                cartItemsList.innerHTML = itemsHtml;
+            }
+        }
+
+        function changeQty(index, delta) {
+            cart[index].quantity += delta;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert("Votre panier est vide !");
+                return;
+            }
+            let message = "Bonjour Amoun Service, je souhaite commander :\n";
+            let total = 0;
+            cart.forEach(item => {
+                message += `- ${item.quantity}x ${item.name} (${item.price * item.quantity} KMF)\n`;
+                total += item.price * item.quantity;
+            });
+            message += `\nTotal : ${total} KMF\nLivraison Moroni 24h`;
+            
+            let phone = "2694273776"; 
+            let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
+
